@@ -22,7 +22,7 @@ export const generalFields = {
     minDomainSegments: 1,
     maxDomainSegments: 3,
     tlds: { allow: ["com", "net", "org"] },
-  }),
+  }).lowercase().trim(),
   password: joi.string(),
   confirmPassword: joi.ref("password"),
   age: joi.number().positive().integer(),
@@ -40,6 +40,18 @@ export const generalFields = {
   gender: joi.string().valid(...Object.values(GenderEnum)),
   role: joi.string().valid(...Object.values(RoleEnum)),
   provider: joi.string().valid(...Object.values(ProviderEnum)),
+  file: {
+    fieldname: joi.string(),
+    originalname: joi.string(),
+    encoding: joi.string(),
+    mimetype: joi.string(),
+    filename: joi.string(),
+    size: joi.number().positive(),
+    destination: joi.string(),
+    path: joi.string(),
+    finalPath: joi.string(),
+  },
+  otp: joi.string().pattern(/^[0-9]{6}$/),
 };
 
 export const validation = (schema) => {

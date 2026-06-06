@@ -53,8 +53,13 @@ const userSchema = new mongoose.Schema(
       enum: Object.values(ProviderEnum),
       default: ProviderEnum.System,
     },
+    confirmEmailOtp: String,
     confirmEmail: Date,
     profilePicture: String,
+    coverPictures: [String],
+    isActive: { type: Boolean, default: true },
+    changeCredentialsTime: Date,
+    forgetPasswordOtp: String,
   },
   {
     timestamps: true,
